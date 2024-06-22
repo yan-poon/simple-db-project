@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +32,11 @@ public class CryptoController {
 		return coinJdbcService.getAllCoins();
 	}
 	
+	@PostMapping("/jdbc")
+	public Coin addNewCoinByJdbc(@RequestBody Coin coin) {
+		return coinJdbcService.addNewCoin(coin);
+	}
+	
 	@GetMapping("/jdbc/{id}")
 	public Coin getCoinByJdbc(@PathVariable("id") int id) {
 		return coinJdbcService.getCoinById(id);
@@ -43,6 +50,11 @@ public class CryptoController {
 	@GetMapping("/jpa/{id}")
 	public Optional<Coin> getCoinByJpa(@PathVariable("id") int id) {
 		return coinJpaService.getCoinById(id);
+	}
+	
+	@PostMapping("/jpa")
+	public Coin addNewCoinByJpa(@RequestBody Coin coin) {
+		return coinJpaService.addNewCoin(coin);
 	}
 
 }

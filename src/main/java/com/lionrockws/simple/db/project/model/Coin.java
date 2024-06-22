@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Coin {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	String name;
 	String code;
