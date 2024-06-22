@@ -1,11 +1,19 @@
 package com.lionrockws.simple.db.project.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Coin {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	String name;
 	String code;
-	String descrption;
+	String description;
 	String chain;
 
 	public int getId() {
@@ -32,12 +40,12 @@ public class Coin {
 		this.code = code;
 	}
 
-	public String getDescrption() {
-		return descrption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrption(String descrption) {
-		this.descrption = descrption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getChain() {

@@ -1,6 +1,7 @@
 package com.lionrockws.simple.db.project.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,16 @@ public class CryptoController {
 	@GetMapping("/jdbc/{id}")
 	public Coin getCoinByJdbc(@PathVariable("id") int id) {
 		return coinJdbcService.getCoinById(id);
+	}
+	
+	@GetMapping("/jpa")
+	public List<Coin> getAllCoinsByJpa() {
+		return coinJpaService.getAllCoins();
+	}
+	
+	@GetMapping("/jpa/{id}")
+	public Optional<Coin> getCoinByJpa(@PathVariable("id") int id) {
+		return coinJpaService.getCoinById(id);
 	}
 
 }

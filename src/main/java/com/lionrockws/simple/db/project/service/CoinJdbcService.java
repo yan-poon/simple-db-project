@@ -30,7 +30,7 @@ public class CoinJdbcService {
 				coin.setId(rs.getInt(1));
 				coin.setName(rs.getString(2));
 				coin.setCode(rs.getString(3));
-				coin.setDescrption(rs.getString(4));
+				coin.setDescription(rs.getString(4));
 				coin.setChain(rs.getString(5));
 				return coin;
 			}
@@ -48,7 +48,7 @@ public class CoinJdbcService {
 				coin.setId(rs.getInt(1));
 				coin.setName(rs.getString(2));
 				coin.setCode(rs.getString(3));
-				coin.setDescrption(rs.getString(4));
+				coin.setDescription(rs.getString(4));
 				coin.setChain(rs.getString(5));
 				return coin;
 			}
