@@ -60,12 +60,12 @@ public class CoinJdbcService {
 	}
 
 	public Coin addNewCoin(Coin coin) {
-		System.out.println(coin);
 		Coin existingCoin = getCoinById(coin.getId());
 		System.out.println(existingCoin);
 		if (existingCoin == null) {
 			String sqlStmt = "insert into coin(coinmarketcap_id, name, code, description) values(?,?,?,?)";
-			jdbcTemplate.update(sqlStmt, coin.getCoinMarketCapId(), coin.getName(), coin.getCode(), coin.getDescription());
+			jdbcTemplate.update(sqlStmt, coin.getCoinMarketCapId(), coin.getName(), coin.getCode(),
+					coin.getDescription());
 			return coin;
 		} else {
 			return existingCoin;
