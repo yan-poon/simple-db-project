@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.lionrockws.simple.db.project.model.Coin;
 
 @Repository
-public interface CoinRepository extends JpaRepository<Coin, Integer> {
+public interface CoinRepository extends JpaRepository<Coin, Long> {
 
 }

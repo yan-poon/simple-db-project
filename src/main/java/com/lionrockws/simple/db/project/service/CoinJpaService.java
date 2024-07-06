@@ -21,7 +21,7 @@ public class CoinJpaService {
 		return coinRepo.findAll();
 	}
 
-	public Optional<Coin> getCoinById(int id) {
+	public Optional<Coin> getCoinById(long id) {
 		return coinRepo.findById(id);
 	}
 

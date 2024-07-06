@@ -1,5 +1,6 @@
 package com.lionrockws.simple.db.project.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,19 +10,28 @@ import jakarta.persistence.Id;
 public class Coin {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
+	@Column(name="coinmarketcap_id")
+	long coinMarketCapId;
 	String name;
 	String code;
 	String description;
-	String chain;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getCoinMarketCapId() {
+		return coinMarketCapId;
+	}
+
+	public void setCoinMarketCapId(long coinMarketCapId) {
+		this.coinMarketCapId = coinMarketCapId;
 	}
 
 	public String getName() {
@@ -46,14 +56,6 @@ public class Coin {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getChain() {
-		return chain;
-	}
-
-	public void setChain(String chain) {
-		this.chain = chain;
 	}
 
 }

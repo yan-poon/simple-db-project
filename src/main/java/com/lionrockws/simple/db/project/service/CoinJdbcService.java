@@ -21,16 +21,16 @@ public class CoinJdbcService {
 	}
 
 	public List<Coin> getAllCoins() {
-		String sqlStmt = "select id, name, code, description, chain from coin";
+		String sqlStmt = "select id, coinmarketcap_id, name, code, description from coin";
 		RowMapper<Coin> coinRowMapper = new RowMapper<Coin>() {
 			@Override
 			public Coin mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Coin coin = new Coin();
-				coin.setId(rs.getInt(1));
-				coin.setName(rs.getString(2));
-				coin.setCode(rs.getString(3));
-				coin.setDescription(rs.getString(4));
-				coin.setChain(rs.getString(5));
+				coin.setId(rs.getLong(1));
+				coin.setCoinMarketCapId(rs.getLong(2));
+				coin.setName(rs.getString(3));
+				coin.setCode(rs.getString(4));
+				coin.setDescription(rs.getString(5));
 				return coin;
 			}
 		};
@@ -38,17 +38,17 @@ public class CoinJdbcService {
 		return coins;
 	}
 
-	public Coin getCoinById(int id) {
-		String sqlStmt = "select id, name, code, description, chain from coin where id=?";
+	public Coin getCoinById(long id) {
+		String sqlStmt = "select id, coinmarketcap_id, name, code, description from coin where id=?";
 		RowMapper<Coin> coinRowMapper = new RowMapper<Coin>() {
 			@Override
 			public Coin mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Coin coin = new Coin();
-				coin.setId(rs.getInt(1));
-				coin.setName(rs.getString(2));
-				coin.setCode(rs.getString(3));
-				coin.setDescription(rs.getString(4));
-				coin.setChain(rs.getString(5));
+				coin.setId(rs.getLong(1));
+				coin.setCoinMarketCapId(rs.getLong(2));
+				coin.setName(rs.getString(3));
+				coin.setCode(rs.getString(4));
+				coin.setDescription(rs.getString(5));
 				return coin;
 			}
 		};
@@ -64,9 +64,8 @@ public class CoinJdbcService {
 		Coin existingCoin = getCoinById(coin.getId());
 		System.out.println(existingCoin);
 		if (existingCoin == null) {
-			String sqlStmt = "insert into coin(id, name, code, description, chain) values(?,?,?,?,?)";
-			jdbcTemplate.update(sqlStmt, coin.getId(), coin.getName(), coin.getCode(), coin.getDescription(),
-					coin.getChain());
+			String sqlStmt = "insert into coin(coinmarketcap_id, name, code, description) values(?,?,?,?)";
+			jdbcTemplate.update(sqlStmt, coin.getCoinMarketCapId(), coin.getName(), coin.getCode(), coin.getDescription());
 			return coin;
 		} else {
 			return existingCoin;
