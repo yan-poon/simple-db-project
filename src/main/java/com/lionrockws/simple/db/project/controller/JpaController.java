@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lionrockws.simple.db.project.model.Coin;
-import com.lionrockws.simple.db.project.service.CoinJdbcService;
 import com.lionrockws.simple.db.project.service.CoinJpaService;
-import com.lionrockws.simple.db.project.service.CoinMyBatisService;
 
 @RestController
 @RequestMapping("/jpa")

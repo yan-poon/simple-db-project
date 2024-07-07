@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lionrockws.simple.db.project.mapper.CoinMapper">
+<mapper
+	namespace="com.lionrockws.simple.db.project.mapper.CoinMapper">
 	<resultMap id="coinResultMap"
 		type="com.lionrockws.simple.db.project.model.Coin">
 		<id property="id" column="id" />
@@ -9,16 +10,24 @@
 		<result property="code" column="code" />
 		<result property="description" column="description" />
 	</resultMap>
-	<select id="selectCoinByCode" resultMap="coinResultMap">
-		SELECT * FROM COIN WHERE CODE = #{code, jdbcType=VARCHAR}
+	<select id="selectCoins" resultMap="coinResultMap">
+		SELECT * FROM COIN
+		<where>
+			<if test="code != null and code!=''">
+				CODE = #{code, jdbcType=VARCHAR}
+			</if>
+		</where>
 	</select>
 	<insert id="insertCoin"
 		parameterType="com.lionrockws.simple.db.project.model.Coin">
-		insert into coin(coinmarketcap_id,name,code,description) values(
+		insert into coin(coinmarketcap_id,name,code,description)
+		values(
 		#{coin.coinMarketCapId, jdbcType=BIGINT},
-		#{coin.name, jdbcType=VARCHAR},
+		#{coin.name,
+		jdbcType=VARCHAR},
 		#{coin.code, jdbcType=VARCHAR},
-		#{coin.description, jdbcType=VARCHAR});
+		#{coin.description,
+		jdbcType=VARCHAR});
 
 	</insert>
 </mapper>

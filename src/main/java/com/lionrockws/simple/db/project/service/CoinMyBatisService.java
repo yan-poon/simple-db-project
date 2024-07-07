@@ -1,6 +1,7 @@
 package com.lionrockws.simple.db.project.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.lionrockws.simple.db.project.mapper.CoinMapper;
@@ -15,8 +16,8 @@ public class CoinMyBatisService {
 		this.coinMapper = coinMapper;
 	}
 	
-	public Coin getCoinByCode(String code) {
-		return coinMapper.selectCoinByCode(code);
+	public List<Coin> getCoins(String code) {
+		return coinMapper.selectCoins(code);
 	}
 	
 	public int insertCoin(Coin coin) {
