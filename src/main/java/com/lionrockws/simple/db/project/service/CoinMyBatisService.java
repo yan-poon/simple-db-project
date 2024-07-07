@@ -18,5 +18,9 @@ public class CoinMyBatisService {
 	public Coin getCoinByCode(String code) {
 		return coinMapper.selectCoinByCode(code);
 	}
+	
+	public int insertCoin(Coin coin) {
+		return coinMapper.insertCoin(coin);
+	}
 
 }

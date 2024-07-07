@@ -65,5 +65,11 @@ public class CryptoController {
 	public Coin getCoinByMybatis(@RequestParam("code") String code) {
 		return coinMyBatisService.getCoinByCode(code);
 	}
+	
+	@PostMapping("/mybatis")
+	public Coin insertCoinByMybatis(@RequestBody Coin coin) {
+		int affectedRow=coinMyBatisService.insertCoin(coin);
+		return coin;
+	}
 
 }
