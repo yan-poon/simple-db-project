@@ -16,6 +16,10 @@ public class CoinMyBatisService {
 		this.coinMapper = coinMapper;
 	}
 	
+	public Coin getCoinById(long id) {
+		return coinMapper.selectCoinById(id);
+	}
+	
 	public List<Coin> getCoins(String code) {
 		return coinMapper.selectCoins(code);
 	}

@@ -10,6 +10,8 @@ import com.lionrockws.simple.db.project.model.Coin;
 @Mapper
 public interface CoinMapper {
 	
+	Coin selectCoinById(@Param("id") long id);
+	
 	List<Coin> selectCoins(@Param("code") String code);
 
 	int insertCoin(@Param("coin") Coin coin);

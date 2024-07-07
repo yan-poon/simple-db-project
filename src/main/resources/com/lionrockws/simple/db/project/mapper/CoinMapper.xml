@@ -10,6 +10,10 @@
 		<result property="code" column="code" />
 		<result property="description" column="description" />
 	</resultMap>
+	<select id="selectCoinById" resultMap="coinResultMap">
+		SELECT * FROM COIN where
+		id= #{id, jdbcType=BIGINT}
+	</select>
 	<select id="selectCoins" resultMap="coinResultMap">
 		SELECT * FROM COIN
 		<where>
