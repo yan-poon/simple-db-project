@@ -17,59 +17,28 @@ import com.lionrockws.simple.db.project.service.CoinJpaService;
 import com.lionrockws.simple.db.project.service.CoinMyBatisService;
 
 @RestController
-@RequestMapping("/crypto/coin")
-public class CryptoController {
+@RequestMapping("/jpa")
+public class JpaController {
 
-	private final CoinJdbcService coinJdbcService;
 	private final CoinJpaService coinJpaService;
-	private final CoinMyBatisService coinMyBatisService;
 
-	public CryptoController(CoinJdbcService coinJdbcService, CoinJpaService coinJpaService,CoinMyBatisService coinMyBatisService) {
-		super();
-		this.coinJdbcService = coinJdbcService;
+	public JpaController(CoinJpaService coinJpaService) {
 		this.coinJpaService = coinJpaService;
-		this.coinMyBatisService = coinMyBatisService;
 	}
 
-	@GetMapping("/jdbc")
-	public List<Coin> getAllCoinsByJdbc() {
-		return coinJdbcService.getAllCoins();
-	}
-
-	@PostMapping("/jdbc")
-	public Coin addNewCoinByJdbc(@RequestBody Coin coin) {
-		return coinJdbcService.addNewCoin(coin);
-	}
-
-	@GetMapping("/jdbc/{id}")
-	public Coin getCoinByJdbc(@PathVariable("id") int id) {
-		return coinJdbcService.getCoinById(id);
-	}
-
-	@GetMapping("/jpa")
+	@GetMapping("/coins")
 	public List<Coin> getAllCoinsByJpa() {
 		return coinJpaService.getAllCoins();
 	}
 
-	@GetMapping("/jpa/{id}")
+	@GetMapping("/coins/{id}")
 	public Optional<Coin> getCoinByJpa(@PathVariable("id") int id) {
 		return coinJpaService.getCoinById(id);
 	}
 
-	@PostMapping("/jpa")
+	@PostMapping("/coins")
 	public Coin addNewCoinByJpa(@RequestBody Coin coin) {
 		return coinJpaService.addNewCoin(coin);
-	}
-
-	@GetMapping("/mybatis")
-	public Coin getCoinByMybatis(@RequestParam("code") String code) {
-		return coinMyBatisService.getCoinByCode(code);
-	}
-	
-	@PostMapping("/mybatis")
-	public Coin insertCoinByMybatis(@RequestBody Coin coin) {
-		int affectedRow=coinMyBatisService.insertCoin(coin);
-		return coin;
 	}
 
 }
