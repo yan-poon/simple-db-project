@@ -27,9 +27,8 @@ public class CoinJpaService {
 
 	public Coin addNewCoin(Coin coin) {
 		Optional<Coin> existingCoin = coinRepo.findById(coin.getId());
-		if (existingCoin.isEmpty()) {
-			Coin newCoin = coinRepo.save(coin);
-			return newCoin;
+		if (existingCoin.isEmpty()) { 
+			return coinRepo.save(coin);
 		} else {
 			return existingCoin.get();
 		}

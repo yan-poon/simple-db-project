@@ -34,8 +34,7 @@ public class CoinJdbcService {
 				return coin;
 			}
 		};
-		List<Coin> coins = jdbcTemplate.query(sqlStmt, coinRowMapper);
-		return coins;
+		return jdbcTemplate.query(sqlStmt, coinRowMapper);
 	}
 
 	public Coin getCoinById(long id) {
@@ -52,16 +51,11 @@ public class CoinJdbcService {
 				return coin;
 			}
 		};
-		List<Coin> coins = jdbcTemplate.query(sqlStmt, coinRowMapper, id);
-		if (coins == null || coins.isEmpty()) {
-			return null;
-		}
-		return coins.get(0);
+		return (Coin) jdbcTemplate.query(sqlStmt, coinRowMapper, id);
 	}
 
 	public Coin addNewCoin(Coin coin) {
 		Coin existingCoin = getCoinById(coin.getId());
-		System.out.println(existingCoin);
 		if (existingCoin == null) {
 			String sqlStmt = "insert into coin(coinmarketcap_id, name, code, description) values(?,?,?,?)";
 			jdbcTemplate.update(sqlStmt, coin.getCoinMarketCapId(), coin.getName(), coin.getCode(),

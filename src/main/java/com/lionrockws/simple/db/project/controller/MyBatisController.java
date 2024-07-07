@@ -29,7 +29,7 @@ public class MyBatisController {
 
 	@PostMapping("/coins")
 	public Coin insertCoinByMybatis(@RequestBody Coin coin) {
-		int affectedRow = coinMyBatisService.insertCoin(coin);
+		coinMyBatisService.insertCoin(coin);
 		return coin;
 	}
 
