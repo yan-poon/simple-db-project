@@ -10,11 +10,20 @@ import org.springframework.stereotype.Service;
 
 import com.lionrockws.simple.db.project.model.Coin;
 
+/**
+ * The {@code CoinJdbcService} class provides services for accessing and manipulating {@code Coin} data in a database using JDBC.
+ * It utilizes {@link JdbcTemplate} for database operations, offering methods to retrieve all coins and add a new coin.
+ */
 @Service
 public class CoinJdbcService {
 
 	private final JdbcTemplate jdbcTemplate;
 
+	/**
+     * Constructs a new {@code CoinJdbcService} with the specified {@code JdbcTemplate}.
+     * 
+     * @param jdbcTemplate the {@code JdbcTemplate} to be used for database operations.
+     */
 	public CoinJdbcService(JdbcTemplate jdbcTemplate) {
 		super();
 		this.jdbcTemplate = jdbcTemplate;
