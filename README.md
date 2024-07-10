@@ -1,7 +1,4 @@
-```markdown
 # Simple Database Project
-
-# Project Objective
 
 The objective of this project is to create a straightforward database application utilizing Spring Boot. It showcases the implementation of database interactions through Spring Boot Starter Data JDBC, Spring Data JPA, and MyBatis. This project serves as a practical example for managing and accessing data in a relational database, demonstrating various techniques such as CRUD operations, filtering data based on specific criteria, and integrating with different data access technologies within the Spring ecosystem.
 
@@ -48,5 +45,3 @@ The application should now be running and accessible.
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-
-```
